@@ -66,7 +66,7 @@ def main():
     plt.imshow(img_1)
     plt.imshow(img_2)
     plt.show()
-    plt.imsave('./result/1.ipg', img_1)
+    plt.imsave('./result/1.jpg', img_1)
     plt.imsave('./result/2.jpg', img_2)
     
     pass
