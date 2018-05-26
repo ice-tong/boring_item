@@ -13,3 +13,5 @@ for i in range(total+1):
         time.sleep(0.1)
         p.update(i)
 ```
+
+![运行结果](src/0.png)
