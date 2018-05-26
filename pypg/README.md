@@ -16,7 +16,7 @@ for i in range(total+1):
         p.update(i)
 ```
 
-## 实际应用
+## 应用场景
 
 ```
 pg = PyProgress(len(data), delay=0)
@@ -31,3 +31,8 @@ for k, row in enumerate(data):
 
 ## 运行结果：
 ![运行结果](src/44.png)
+
+## download.py
+
+利用 pypg.py 写的一个媒体文件下载小工具
+![运行结果](src/45.png)
