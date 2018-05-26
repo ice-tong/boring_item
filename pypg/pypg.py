@@ -21,6 +21,7 @@ class PyProgress(object):
         self.n_sign = '-'
         self.cursor = 0
         self.b_num = 0
+        self.start_time = time.time()
         
     def ipy_show(self, out):
         print('\b'*self.b_num, end='')
@@ -38,15 +39,21 @@ class PyProgress(object):
         f = (self.now/self.total)*self.lenght
         if f-1 >= self.cursor:
             self.cursor+=1
-        out = self.sign*self.cursor + (self.lenght-self.cursor)*self.n_sign
+        
+        out = ''
+        out += '{:.2f}% '.format((self.now/self.total)*100)
+        out += self.sign*self.cursor + (self.lenght-self.cursor)*self.n_sign
         out += ' {}/{}'.format(self.now, self.total)
-        out += ' {:.2f}%'.format((self.now/self.total)*100)
+        out += ' {:.2f}s'.format(time.time()-self.start_time)
         out = self.name+': '+out
         
         if self.isIpy:
             self.ipy_show(out)
         else:
             self.show(out)
+        if self.cursor == self.lenght:
+            print('\n')
+            print('{} work over!'.format(self.name))
             
 
 def test(total=150, t=0.1):
