@@ -10,7 +10,7 @@ class PyProgress(object):
     
     def __init__(self, total:int, now=0, lenght=20, sign='#', 
                  name='progress', delay=0.01, isIpy=True):
-        self.total = total
+        self.total = int(total)
         self.now = now
         self.sign = sign
         self.lenght = lenght
@@ -23,6 +23,12 @@ class PyProgress(object):
         self.b_num = 0
         self.start_time = time.time()
         
+    def back_pace(self):
+        
+        if not self.b_num:
+            print('\b'*self.b_num, end='')
+            self.b_num = 0
+        
     def ipy_show(self, out):
         print('\b'*self.b_num, end='')
         time.sleep(self.delay)
@@ -34,11 +40,14 @@ class PyProgress(object):
         
     def update(self, now):
         
-        self.now = now
+        self.now = int(now)
         
         f = (self.now/self.total)*self.lenght
         if f-1 >= self.cursor:
-            self.cursor+=1
+            if self.cursor >= self.lenght:
+                self.cursor = self.lenght
+            else:
+                self.cursor+=1
         
         out = ''
         out += '{:.2f}% '.format((self.now/self.total)*100)
@@ -51,10 +60,6 @@ class PyProgress(object):
             self.ipy_show(out)
         else:
             self.show(out)
-        if self.cursor == self.lenght:
-            print('\n')
-            print('{} work over!'.format(self.name))
-            
 
 def test(total=150, t=0.1):
     
