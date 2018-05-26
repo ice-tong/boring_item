@@ -4,4 +4,4 @@
 利用wordcloud制作词语，用bkn.jpg作为底图。
 
 ## 结果截图：
-![](result/1.png)
+![使用了jieba分词](result/2.jpg)
