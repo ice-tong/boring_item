@@ -18,13 +18,13 @@ for i in range(total+1):
 
 ```
 pg = PyProgress(len(data), delay=0)
-    for k, row in enumerate(data):
-        content_url = row[3]
-        content = get_content(content_url)
-        if not content:
-            print('failed connect url: {}'.format(content_url))
-        row.append(content)
-        pg.update(k)
+for k, row in enumerate(data):
+    content_url = row[3]
+    content = get_content(content_url)
+    if not content:
+        print('failed connect url: {}'.format(content_url))
+    row.append(content)
+    pg.update(k)
 ```
 
 ## 运行结果：
